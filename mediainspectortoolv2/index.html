@@ -1,60 +1,146 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>ecpcldtool</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cld Media Inspector Tool v2</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: white;
+    }
+
+    header {
+      background-color: #3448c5;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #eeeef1;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: #0c163b;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    nav a:hover {
+      color: #3448c5;
+    }
+
+    .content {
+      padding: 20px;
+      color: #0c163b;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .feature {
+      color: #3448c5;
+      flex: 100%;
+      /* Take up full width */
+    }
+
+    .accent1 {
+      color: #ff5050;
+    }
+
+    .accent2 {
+      color: #ffd4c4;
+    }
+
+    .accent3 {
+      color: #f7bc00;
+    }
+
+    .accent4 {
+      color: #48c4d8;
+    }
+
+    .accent5 {
+      color: #b6d2ff;
+    }
+
+    /* Card Styles */
+    .card {
+      border: 1px solid #eeeef1;
+      border-radius: 8px;
+      padding: 10px;
+      margin: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background-color: white;
+      flex: 1;
+      min-width: calc(33.33% - 20px);
+      /* Approximately three cards per row */
+      box-sizing: border-box;
+    }
+
+    .card-title {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .card-content {
+      margin-top: 5px;
+    }
+
+    @media (max-width: 768px) {
+
+      /* For screens smaller than 768px (e.g., mobile devices) */
+      .card {
+        min-width: 100%;
+        /* One card per row */
+      }
+    }
+  </style>
 </head>
 
-<body data-new-gr-c-s-check-loaded="14.1111.0" data-gr-ext-installed="">
-
-    <h1>Welcome to Cloudinary Tool</h1>
-    <p>This is under construction</p>
-
-
-    <a href="javascript:(function()%7Bvar%20version%20%3D%20%220.0.4%22%3Bconsole.log(%22MediaInspectorTool%20Version%22%2C%20version)%3Bif%20(!document.getElementById(%22mtid%22))%20%7Bvar%20head%20%3D%20document.getElementsByTagName(%22HEAD%22)%5B0%5D%3Bvar%20m%20%3D%20document.createElement(%22META%22)%3Bm.setAttribute(%22id%22%2C%20%22mtid%22)%3Bm.setAttribute(%22charset%22%2C%20%22utf-8%22)%3Bm.setAttribute(%22http-equiv%22%2C%20%22Content-Security-Policy%22)%3Bm.setAttribute(%22content%22%2C%22default-src%20gap%3A%2F%2Fready%20file%3A%2F%2F*%20*%3B%20style-src%20'self'%20http%3A%2F%2F*%20https%3A%2F%2F*%20'unsafe-inline'%3B%20script-src%20'self'%20http%3A%2F%2F*%20https%3A%2F%2F*%20'unsafe-inline'%20'unsafe-eval'%22)%3Bhead.appendChild(m)%3B%7Dif%20(!document.getElementById(%22majsid%22))%20%7Bvar%20head%20%3D%20document.getElementsByTagName(%22head%22)%5B0%5D%3Bvar%20s%20%3D%20document.createElement(%22script%22)%3Bs.type%20%3D%20%22text%2Fjavascript%22%3Bs.src%20%3D%22https%3A%2F%2Fres.cloudinary.com%2Fmedialyzer%2Fraw%2Fupload%2Fassets%2Fstatic%2Fjs%2Fmediainspectorapp.min.js%22%3Bs.id%20%3D%20%22majsid%22%3Bhead.appendChild(s)%3B%7D%20else%20%7BappMain()%3B%7D%7D)()"
-        class="button button-bookmarklet">Cloudinary Media Inspertor Tool v2</a>
-
-    <script Language=" JavaScript" Type="text/javaScript">
-
-        // var urlAddress = "javascript:(function()%7Bvar%20version%20%3D%20%220.0.4%22%3Bconsole.log(%22MediaInspectorTool%20Version%22%2C%20version)%3Bif%20(!document.getElementById(%22mtid%22))%20%7Bvar%20head%20%3D%20document.getElementsByTagName(%22HEAD%22)%5B0%5D%3Bvar%20m%20%3D%20document.createElement(%22META%22)%3Bm.setAttribute(%22id%22%2C%20%22mtid%22)%3Bm.setAttribute(%22charset%22%2C%20%22utf-8%22)%3Bm.setAttribute(%22http-equiv%22%2C%20%22Content-Security-Policy%22)%3Bm.setAttribute(%22content%22%2C%22default-src%20gap%3A%2F%2Fready%20file%3A%2F%2F*%20*%3B%20style-src%20'self'%20http%3A%2F%2F*%20https%3A%2F%2F*%20'unsafe-inline'%3B%20script-src%20'self'%20http%3A%2F%2F*%20https%3A%2F%2F*%20'unsafe-inline'%20'unsafe-eval'%22)%3Bhead.appendChild(m)%3B%7Dif%20(!document.getElementById(%22majsid%22))%20%7Bvar%20head%20%3D%20document.getElementsByTagName(%22head%22)%5B0%5D%3Bvar%20s%20%3D%20document.createElement(%22script%22)%3Bs.type%20%3D%20%22text%2Fjavascript%22%3Bs.src%20%3D%22https%3A%2F%2Fres.cloudinary.com%2Fmedialyzer%2Fraw%2Fupload%2Fassets%2Fstatic%2Fjs%2Fmediainspectorapp.min.js%22%3Bs.id%20%3D%20%22majsid%22%3Bhead.appendChild(s)%3B%7D%20else%20%7BappMain()%3B%7D%7D)()";
-        // var pageName = "Cloudinary Media Inspertor Tool v2";
-
-        function addToFavorites() {
-            /*
-            if (window.external) {
-                window.external.AddFavorite(urlAddress, pageName)
-            }
-            else {
-                console.log("Sorry! Your browser doesn't support this function.");
-            }
-            */
-           console.log("The function `addToFavorites()` is not yet available!!!");
-        }
-    </script>
-
-    <p>Bookmark this page (TBD)!</p>
-    <input TYPE="button" VALUE="Add Favorite" onClick="addToFavorites()">
-
-    <h3>Notes</h3>
-    <p>Delete the existing bookmark from the browser and use the latest one from here</p>
-    <p>Clear local browser cache and relaunch browser</p>
-    <p>Allow browser popups to view the Media Inspector App (both desktop and mobile devices)</p>
-
-    <p>Version: 0.0.0.4</p>
-
-    <p>Email: ecpmlcutil003@gmail.com</p>
+<body>
+  <header>
+    <h2>Cloudinary Dev Tools</h2>
+  </header>
 
 
-    <h4>Test Web Pages</h4>
-    
-    <br />
-    <a href="https://ecpb-cldtools.github.io/mediainspectortoolv2/testpage.html">Test Page with images and videos</a>
-    
-    <br />
-    <a href="https://ecpb-cldtools.github.io/mediainspectortoolv2/testerrpage.html">Test Page with images and videos (including some errors)</a>
-    
+  <div class="content">
+    <div>
+      <h2 class="feature">Media Inspector Bookmarklet</h2>
 
+      <p>The Cloudinary Media Inspector Tool helps to analyze the media assets on your web page, provides information
+        about the file including the request response data such as content type, content length, status and others. It
+        is an essential tool that helps on debugging Cloudinary assets being delivered on the pages of the web
+        application.</p>
 
-</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+      <p>This tool is a bookmarklet version of the <a data-popup="true"
+          href="https://cloudinary.com/documentation/media_inspector_browser_extension">Cloudinary Media Inspector</a>
+        and it can be used in different browsers.</p>
+
+    </div>
+    <div>
+      <h2 class="feature">Installation</h2>
+      <h4 class="">Bookmarklet Link</h4>
+
+      <div style="width: 250px;height: 50px;word-wrap: break-word;border-style: dotted;align-content: center;padding-left: 25px;">
+        <p></p>
+        <a href="javascript:(function()%7Bvar%20version%20%3D%20%220.1.1%22%3Bconsole.log(%22MediaInspectorTool%20Version%22%2C%20version)%3Bif%20(!document.getElementById(%22mtid%22))%20%7Bvar%20head%20%3D%20document.getElementsByTagName(%22HEAD%22)%5B0%5D%3Bvar%20m%20%3D%20document.createElement(%22META%22)%3Bm.setAttribute(%22id%22%2C%20%22mtid%22)%3Bm.setAttribute(%22charset%22%2C%20%22utf-8%22)%3Bm.setAttribute(%22http-equiv%22%2C%20%22Content-Security-Policy%22)%3Bm.setAttribute(%22content%22%2C%22default-src%20gap%3A%2F%2Fready%20file%3A%2F%2F*%20*%3B%20style-src%20'self'%20http%3A%2F%2F*%20https%3A%2F%2F*%20'unsafe-inline'%3B%20script-src%20'self'%20http%3A%2F%2F*%20https%3A%2F%2F*%20'unsafe-inline'%20'unsafe-eval'%22)%3Bhead.appendChild(m)%3B%7Dif%20(!document.getElementById(%22majsid%22))%20%7Bvar%20head%20%3D%20document.getElementsByTagName(%22head%22)%5B0%5D%3Bvar%20s%20%3D%20document.createElement(%22script%22)%3Bs.type%20%3D%20%22text%2Fjavascript%22%3Bs.src%20%3D%20%22https%3A%2F%2Fres.cloudinary.com%2Fmedialyzer%2Fraw%2Fupload%2Fassets%2Fstatic%2Fjs%2Fmediainspectorapp-min.js%22%3Bs.id%20%3D%20%22majsid%22%3Bhead.appendChild(s)%3B%7D%20else%20%7BappMain()%3B%7D%7D)()"
+          class="button button-bookmarklet">Cloudinary Media Inspertor Tool</a>
+      </div>
+      <p></p>
+      <h4 class="">Javascript Script</h4>
+      <p></p>
+      <div style="width: 800px;word-wrap: break-word;border-style: dotted;">
+        javascript:(function()%7Bvar%20version%20%3D%20%220.1.1%22%3Bconsole.log(%22MediaInspectorTool%20Version%22%2C%20version)%3Bif%20(!document.getElementById(%22mtid%22))%20%7Bvar%20head%20%3D%20document.getElementsByTagName(%22HEAD%22)%5B0%5D%3Bvar%20m%20%3D%20document.createElement(%22META%22)%3Bm.setAttribute(%22id%22%2C%20%22mtid%22)%3Bm.setAttribute(%22charset%22%2C%20%22utf-8%22)%3Bm.setAttribute(%22http-equiv%22%2C%20%22Content-Security-Policy%22)%3Bm.setAttribute(%22content%22%2C%22default-src%20gap%3A%2F%2Fready%20file%3A%2F%2F*%20*%3B%20style-src%20'self'%20http%3A%2F%2F*%20https%3A%2F%2F*%20'unsafe-inline'%3B%20script-src%20'self'%20http%3A%2F%2F*%20https%3A%2F%2F*%20'unsafe-inline'%20'unsafe-eval'%22)%3Bhead.appendChild(m)%3B%7Dif%20(!document.getElementById(%22majsid%22))%20%7Bvar%20head%20%3D%20document.getElementsByTagName(%22head%22)%5B0%5D%3Bvar%20s%20%3D%20document.createElement(%22script%22)%3Bs.type%20%3D%20%22text%2Fjavascript%22%3Bs.src%20%3D%20%22https%3A%2F%2Fres.cloudinary.com%2Fmedialyzer%2Fraw%2Fupload%2Fassets%2Fstatic%2Fjs%2Fmediainspectorapp-min.js%22%3Bs.id%20%3D%20%22majsid%22%3Bhead.appendChild(s)%3B%7D%20else%20%7BappMain()%3B%7D%7D)()
+      </div>
+    </div>
+
+  </div>
+</body>
 
 </html>
