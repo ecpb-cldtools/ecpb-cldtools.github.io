@@ -123,9 +123,15 @@
         and it can be used in different browsers.</p>
 
     </div>
+    
     <div>
       <h2 class="feature">Installation</h2>
+      <hr/>
       <h4 class="">Bookmarklet Link</h4>
+      <ul>
+        <li>Open the browser bookmark</li>
+        <li>Drag and drop the link below into the browser bookmark</li>
+      </ul>
 
       <div
         style="width: 250px;height: 50px;word-wrap: break-word;border-style: dotted;align-content: center;padding-left: 25px;">
@@ -135,11 +141,19 @@
       </div>
       <p></p>
 
+      <hr/>
       <h4 class="">Javascript Script</h4>
+      <ul>
+        <li>Create a new bookmark in the browser</li>
+        <li>Edit the bookmark and update the URL using the javascript below</li>
+      </ul>
       <p></p>
-      <div style="width: 800px;word-wrap: break-word;border-style: dotted;">
+      <div style="width: 800px;word-wrap: break-word;border-style: dotted;padding: 10px;">
         javascript:(function()%7Bvar%20version%20%3D%20%220.1.1%22%3Bconsole.log(%22MediaInspectorTool%20Version%22%2C%20version)%3Bif%20(!document.getElementById(%22mtid%22))%20%7Bvar%20head%20%3D%20document.getElementsByTagName(%22HEAD%22)%5B0%5D%3Bvar%20m%20%3D%20document.createElement(%22META%22)%3Bm.setAttribute(%22id%22%2C%20%22mtid%22)%3Bm.setAttribute(%22charset%22%2C%20%22utf-8%22)%3Bm.setAttribute(%22http-equiv%22%2C%20%22Content-Security-Policy%22)%3Bm.setAttribute(%22content%22%2C%22default-src%20gap%3A%2F%2Fready%20file%3A%2F%2F*%20*%3B%20style-src%20'self'%20http%3A%2F%2F*%20https%3A%2F%2F*%20'unsafe-inline'%3B%20script-src%20'self'%20http%3A%2F%2F*%20https%3A%2F%2F*%20'unsafe-inline'%20'unsafe-eval'%22)%3Bhead.appendChild(m)%3B%7Dif%20(!document.getElementById(%22majsid%22))%20%7Bvar%20head%20%3D%20document.getElementsByTagName(%22head%22)%5B0%5D%3Bvar%20s%20%3D%20document.createElement(%22script%22)%3Bs.type%20%3D%20%22text%2Fjavascript%22%3Bs.src%20%3D%20%22https%3A%2F%2Fres.cloudinary.com%2Fmedialyzer%2Fraw%2Fupload%2Fassets%2Fstatic%2Fjs%2Fmediainspectorapp-min.js%22%3Bs.id%20%3D%20%22majsid%22%3Bhead.appendChild(s)%3B%7D%20else%20%7BappMain()%3B%7D%7D)()
       </div>
+
+      <p></p>
+      <hr/>
 
       <p></p>
       <h2 class="feature">Demo Web Pages</h2>
