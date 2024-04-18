@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cld Media Inspector Tool v2</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: white;
+    }
+
+    header {
+      background-color: #3448c5;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #eeeef1;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: #0c163b;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    nav a:hover {
+      color: #3448c5;
+    }
+
+    .content {
+      padding: 20px;
+      color: #0c163b;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .feature {
+      color: #3448c5;
+      flex: 100%;
+      /* Take up full width */
+    }
+
+    .accent1 {
+      color: #ff5050;
+    }
+
+    .accent2 {
+      color: #ffd4c4;
+    }
+
+    .accent3 {
+      color: #f7bc00;
+    }
+
+    .accent4 {
+      color: #48c4d8;
+    }
+
+    .accent5 {
+      color: #b6d2ff;
+    }
+
+    /* Card Styles */
+    .card {
+      border: 1px solid #eeeef1;
+      border-radius: 8px;
+      padding: 10px;
+      margin: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background-color: white;
+      flex: 1;
+      min-width: calc(33.33% - 20px);
+      /* Approximately three cards per row */
+      box-sizing: border-box;
+    }
+
+    .card-title {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .card-content {
+      margin-top: 5px;
+    }
+
+    @media (max-width: 768px) {
+
+      /* For screens smaller than 768px (e.g., mobile devices) */
+      .card {
+        min-width: 100%;
+        /* One card per row */
+      }
+    }
+
+    /* *********************************************************************** */
+        /* * Main Menu
+/* *********************************************************************** */
+
+        .daverif-navmenu {
+            position: fixed;
+            border-radius: 8px;
+            background: hwb(238 25% 51% / 0.71);
+            box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+        }
+
+
+
+        .daverif-navmenu .daverif-navmenu-body {
+            padding: 10px;
+        }
+
+        .daverif-navmenu .daverif-navmenu-title {
+            position: relative;
+            display: inline-block;
+            color: #b1b4f7;
+        }
+
+        .daverif-navmenu .daverif-navmenu-btn-close {
+            position: relative;
+            float: right;
+            background: #d9d9e2;
+            color: #7272e1;
+            text-align: center;
+            cursor: pointer;
+        }
+
+
+        .daverif-navmenu .daverif-navmenu-version {
+            position: relative;
+            bottom: -15px;
+            left: 10px;
+            color: #b5b5df;
+            font-size: 14px;
+            font-style: italic;
+        }
+
+
+        .daverif-font {
+            font-size: 14px;
+        }
+
+        .daverif-hdr-italic {
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        /* *********************************************************************** */
+        /* * Main Menu Tab Selector
+/* *********************************************************************** */
+
+        /* Android 2.3 :checked fix */
+        @keyframes fake {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opactity: 1
+            }
+        }
+
+
+        .radio-tabs {
+            display: flex;
+            flex-flow: row;
+            height: 400px;
+        }
+
+        .radio-tabs .state {
+            position: absolute;
+            left: -10000px;
+        }
+
+        #radio1:focus~.tabs #first-tab,
+        #radio2:focus~.tabs #second-tab,
+        #radio3:focus~.tabs #third-tab,
+        #radio4:focus~.tabs #fourth-tab,
+        #radio5:focus~.tabs #fifth-tab {
+            box-shadow: 0 0 3px 3px rgba(0, 127, 255, .5);
+        }
+
+        /* Tab button container */
+        .tabs {
+            height: 396px;
+            border-radius: 10px 0px 0px 10px;
+            padding-top: 20px;
+            background-color: #282438
+        }
+
+        /* Tab button */
+        .radio-tabs .tab {
+            align-items: center;
+            color: #75747a;
+            cursor: hand;
+            cursor: pointer;
+            display: flex;
+            flex: none;
+            flex-flow: column;
+            text-align: center;
+            margin: 5px;
+            padding: 10px;
+            width: 25px;
+            height: 25px;
+        }
+
+        .radio-tabs .facontent {
+            font-size: 25px;
+        }
+
+        .radio-tabs .tab:hover {
+            color: #b9defd;
+        }
+
+        #radio1:checked~.tabs #first-tab,
+        #radio2:checked~.tabs #second-tab,
+        #radio3:checked~.tabs #third-tab,
+        #radio4:checked~.tabs #fourth-tab,
+        #radio5:checked~.tabs #fifth-tab {
+            color: #b9defd;
+            cursor: default;
+            background-color: #4f5199;
+            width: 25px;
+            height: 25px;
+            margin: 5px;
+            border-radius: 12px;
+        }
+
+        .tab-label {
+            font-size: 16px;
+            line-height: 1rem;
+        }
+
+        .radio-tabs .panels {
+            flex: 70%;
+            background-color: #3d3655;
+            color: #d2ecef;
+            padding: .5em;
+            height: 400px;
+            border-radius: 0px 8px 8px 0px;
+        }
+
+        .radio-tabs .panel {
+            display: none;
+        }
+
+        #radio1:checked~.panels #first-panel,
+        #radio2:checked~.panels #second-panel,
+        #radio3:checked~.panels #third-panel,
+        #radio4:checked~.panels #fourth-panel,
+        #radio5:checked~.panels #fifth-panel {
+            display: block;
+        }
+
+        #first-panel {
+            max-width: 1000px;
+        }
+
+        .slide-title {
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 1.8rem;
+        }
+
+        .slide-subtitle {
+            text-align: left;
+            font-size: 1.6rem;
+            font-style: italic;
+        }
+
+        .left {
+            text-align: left;
+        }
+
+        .slide-item {
+            font-size: 1.4rem;
+        }
+
+
+        /* *********************************************************************** */
+        /* * Verifier Tab - First Panel
+        /* *********************************************************************** */
+
+        .st-frm-delivery-url {
+            overflow-y: scroll;
+            height: 140px;
+            background: #ced0ff;
+            margin-bottom: 5px;
+            max-width: 1000px;
+        }
+
+        .st-frm-div-verifier {
+            float: left;
+        }
+
+        .st-frm-div-inspector {
+            float: right;
+        }
+
+
+
+
+        /* *********************************************************************** */
+        /* * Settings Tab - Fifth Panel
+/* *********************************************************************** */
+
+        .st-frm-hdr {
+            height: 25px;
+        }
+
+        .st-frm-body {
+            overflow-y: scroll;
+            max-width: 1000px;
+        }
+
+        .st-frm-title {
+            font-size: 18px;
+        }
+
+        .st-frm-body .input-box {
+            display: table-caption;
+            padding: 10px 10px;
+            /* background: linear-gradient(315deg, #e91e63, #5d02ff); */
+            font-size: 14px;
+            height: 70px;
+        }
+
+        .st-frm-body .input-box .ctl-input::placeholder {
+            color: #9fb9f9;
+            opacity: 1;
+            /* Firefox */
+        }
+
+        ::-ms-input-placeholder {
+            /* Edge 12 -18 */
+            color: #9fb9f9;
+        }
+
+        .st-frm-body .input-box .ctl-input {
+            width: 660px;
+            font-size: 14px;
+            margin-top: 3px;
+            margin-bottom: 3px;
+        }
+
+        .st-frm-body .st-frm-save {
+            margin-top: 20px;
+        }
+
+        .st-frm-body .st-frm-save .ctl-input-save {
+            width: 50px;
+        }
+
+
+        ::-webkit-input-placeholder {
+            /* Chrome/Opera/Safari */
+            color: #5d5b74;
+            font-style: italic;
+        }
+
+        ::-moz-placeholder {
+            /* Firefox 19+ */
+            color: #5d5b74;
+            font-style: italic;
+        }
+
+        :-ms-input-placeholder {
+            /* IE 10+ */
+            color: #5d5b74;
+            font-style: italic;
+        }
+
+        :-moz-placeholder {
+            /* Firefox 18- */
+            color: #5d5b74;
+            font-style: italic;
+        }
+
+        ::-moz-placeholder {
+            opacity: 1;
+        }
+
+
+
+
+
+
+
+
+        .form {
+            position: relative;
+            background: #060c21;
+            border: 1px solid #000;
+            width: 350px;
+            padding: 40px 40px 60px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .form::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            bottom: -2px;
+            left: -2px;
+            background: linear-gradient(315deg, #e91e63, #5d02ff);
+            z-index: -1;
+            transform: skew(2deg, 1deg);
+            border-radius: 10px;
+        }
+
+        .form h2 {
+            color: #fff;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        .form .input {
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .form .input .inputBox {
+            margin-top: 10px;
+        }
+
+        .form .input .inputBox label {
+            display: block;
+            color: #fff;
+            margin-bottom: 5px;
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
+
+        .form .input .inputBox input {
+            position: relative;
+            width: 100%;
+            height: 40px;
+            border: none;
+            outline: none;
+            padding: 5px 15px;
+            background: linear-gradient(315deg, #e91e63, #5d02ff);
+            color: #fff;
+            font-size: 18px;
+            border-radius: 10px;
+        }
+
+        .form .input .inputBox input[type="submit"] {
+            cursor: pointer;
+            margin-top: 20px;
+            letter-spacing: 1px;
+        }
+
+        .form .input .inputBox input[type="submit"]:hover {
+            background: linear-gradient(315deg, #5d02ff, #e91e63);
+        }
+
+        .form .input .inputBox input[type="submit"]:active {
+            color: rgba(255, 255, 255, 0.521);
+            background: linear-gradient(315deg, #e91e6271, #5f02ff8c);
+        }
+
+        .forgot {
+            margin-top: 10px;
+            color: #fff;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .forgot a {
+            color: #ff0800;
+        }
+
+        .social {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .social button {
+            width: 75%;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            padding: 5px 10px;
+            background: transparent;
+            border: 3px solid #222;
+            outline: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+
+        }
+
+        .social button i {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+
+        }
+
+        .social button p {
+            color: #fff;
+            font-size: 15px;
+            margin-left: 10px;
+            letter-spacing: 1px;
+        }
+
+        .social button:hover {
+            background: linear-gradient(315deg, #326cd6, #5d02ff);
+        }
+
+        .social button:hover i {
+            filter: invert(1);
+        }
+
+        .social button:active {
+            background: linear-gradient(315deg, #5d02ff, #e91e63)
+        }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h2>Cloudinary Dev Tools</h2>
+  </header>
+
+
+  <section>
+    <div class="content">
+      <div>
+        <h2 class="feature">Media Inspector Bookmarklet</h2>
+
+        <p>The Cloudinary Media Inspector Tool helps to analyze the media assets on your web page, provides information
+          about the file including the request response data such as content type, content length, status and others. It
+          is an essential tool that helps on debugging Cloudinary assets being delivered on the pages of the web
+          application.</p>
+
+        <p>This tool is a lightweight tool used to inspect/analyze delivery URLs and providing insights for possible 
+          asset optimizations using different browsers.</p>
+
+      </div>
+
+      <div id="first-panel" class="panel active animated slideInRight">
+            <div class="st-frm-hdr">
+                <hr>
+            </div>
+
+            <div class="st-frm-body">
+
+                <div class="st-frm-input">
+                    <div class="input-box">
+                        <label class="ctl-label" for="">Delivery URL</label>
+                        <input id="delivery-url-id" class="ctl-input" type="text"
+                            placeholder="https://res.cloudinary.com/image/upload/sample.jpg">
+                        <button id="add-asset-id" class="st-frm-add-asset" disabled>Add</button>
+                    </div>
+                </div>
+
+                <p>Sample Delivery URL: https://res.cloudinary.com/epasos/image/upload/demo/images/SampleImageB.jpg</p>
+
+                <p class="daverif-hdr-italic">Delivery URLs:</p>
+                <div id="st-frm-delivery-url-id" class="st-frm-delivery-url daverif-font">
+                    <!-- To be filled in the form -->
+                </div>
+
+                <div id="asset-display-id">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+  </section>
+
+  
+    
+
+    <script>
+
+        var btnAddAsset = document.getElementById("add-asset-id");
+        if (btnAddAsset) {
+            btnAddAsset.addEventListener('click', onAddAsset, false);
+        }
+
+        var inpTargetUrl = document.getElementById("delivery-url-id");
+        if (inpTargetUrl) {
+            inpTargetUrl.addEventListener('input', onInpChange, false);
+        }
+
+        var deliveryUrl = document.getElementById("st-frm-delivery-url-id");
+
+        /*
+        var btnClearAsset = document.getElementById("clr-asset-id");
+        if (btnClearAsset) {
+            btnClearAsset.disabled = true;
+            btnClearAsset.addEventListener('click', onClearAsset, false);
+        }
+
+        
+
+        var btnAssetVerifier = document.getElementById("asset-verifier-id");
+        if (btnAssetVerifier) {
+            btnAssetVerifier.disabled = true;
+            btnAssetVerifier.addEventListener('click', onAssetVerifier, false);
+        }
+
+        var btnMediaInspector = document.getElementById("media-inspector-id");
+        if (btnMediaInspector) {
+            btnMediaInspector.addEventListener('click', onMediaInspector, false);
+        }
+
+        
+
+        */
+
+
+
+        function onInpChange(e) {
+            if (inpTargetUrl) {
+                if (inpTargetUrl.value.length > 0) {
+                    btnAddAsset.disabled = false;
+                }
+                else {
+                    btnAddAsset.disabled = true;
+                }
+            }
+        }
+
+        async function getRemoteResponseHeader(url) {
+
+            let retVal = "";
+
+            const reponse = await fetch(url, {
+                method: 'HEAD'
+            });
+
+            let contentType = reponse.headers.get('Content-Type');
+
+            if (contentType) {
+                if (contentType.match(/^image\//i)) {
+                    retVal = `<img src="${url}" style="max-width: 800px">`
+                } else if (contentType.match(/^video\//i)) {
+                    retVal = `
+            <video style="max-width: 800px" controls>
+                <source src="${url}" type="${contentType}">
+                Your browser does not support the video tag.
+            </video>`;
+                } else if (contentType.match(/javascript/i)) {
+                    retVal = `
+<span style="display: table;margin: 0 auto;color:lightgray;font-weight:bold;width: 60px;height: 50px;text-align: center;font-family: sans-serif;border-radius: 5px 5px 5px; border: 1px solid lightgray;float:left;">{ . . . }   JS</span>`;
+                } else {
+                    retVal = `
+<span style="display: table;margin: 0 auto;color:lightgray;font-weight:bold;width: 60px;height: 50px;text-align: center;font-family: sans-serif;border-radius: 5px 5px 5px; border: 1px solid lightgray;float:left;">{ - }  NA </span>`;
+                }
+            }
+
+            let assetDisplay = document.getElementById("asset-display-id");
+
+            if (assetDisplay) {
+                assetDisplay.innerHTML += `<div>${retVal}</div><br/><br/>`;
+            }
+
+            console.log("assetDisplay: ", assetDisplay);
+
+            return retVal;
+        }
+
+        function onAddAsset(e) {
+            if (inpTargetUrl) {
+                if (inpTargetUrl.value.length > 0) {
+
+                    let assetTag = "";
+
+                    getRemoteResponseHeader(inpTargetUrl.value).then((data) => assetTag = data);
+
+                    if (deliveryUrl) {
+                        deliveryUrl.innerHTML += "<p>" + inpTargetUrl.value + "</p>"
+                        inpTargetUrl.value = "";
+                    }
+
+
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>
